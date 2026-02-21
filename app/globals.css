@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+  --gold: #F5C542;
+  --blue: #2E86AB;
+  --green: #46A758;
+  --dark: #212529;
+  --bg: #F8F9FA;
+  --border: #E9ECEF;
+  --muted: #6C757D;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #aaa; }
+
+/* Button hover effects */
+.btn-gold {
+  @apply bg-brand-gold text-brand-dark font-bold px-6 py-3 rounded-xl transition-all duration-200;
+}
+.btn-gold:hover {
+  @apply shadow-lg scale-[1.02];
+  background: #e6b73a;
+}
+
+.btn-blue {
+  @apply bg-brand-blue text-white font-bold px-6 py-3 rounded-xl transition-all duration-200;
+}
+.btn-blue:hover {
+  @apply shadow-lg scale-[1.02];
+  background: #256f8f;
+}
+
+/* Card hover */
+.item-card {
+  @apply transition-all duration-200;
+}
+.item-card:hover {
+  @apply shadow-xl -translate-y-1;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-fade-in-delay-1 { animation-delay: 0.1s; opacity: 0; }
+.animate-fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
+.animate-fade-in-delay-3 { animation-delay: 0.3s; opacity: 0; }
+.animate-fade-in-delay-4 { animation-delay: 0.4s; opacity: 0; }
