@@ -1,5 +1,5 @@
+// FILE: app/item/page.tsx
 'use client';
-import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import ItemDetailClient from '@/components/ItemDetailClient';
 

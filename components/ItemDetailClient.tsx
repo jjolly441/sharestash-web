@@ -1,3 +1,4 @@
+// FILE: components/ItemDetailClient.tsx
 'use client';
 import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -6,7 +7,7 @@ import { db } from '@/lib/firebase';
 import { useAuth } from '@/lib/auth';
 import { RentalItem, UserProfile } from '@/lib/types';
 import Link from 'next/link';
-import { MapPin, Calendar, Shield, Star, ArrowLeft, Loader2, User, Clock, DollarSign, ChevronRight } from 'lucide-react';
+import { MapPin, Calendar, Shield, Star, ArrowLeft, Loader2, User, Clock, DollarSign, ChevronRight, Smartphone, X } from 'lucide-react';
 
 export default function ItemDetailClient() {
   const router = useRouter();
@@ -14,6 +15,7 @@ export default function ItemDetailClient() {
   const [item, setItem] = useState<RentalItem | null>(null);
   const [owner, setOwner] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showAppPrompt, setShowAppPrompt] = useState(false);
 
   const searchParams = useSearchParams();
 const itemId = searchParams.get('id') || '';
@@ -64,7 +66,7 @@ const itemId = searchParams.get('id') || '';
       router.push('/login');
       return;
     }
-    router.push(`/book/${item.id}`);
+    setShowAppPrompt(true);
   };
 
   return (
@@ -78,7 +80,7 @@ const itemId = searchParams.get('id') || '';
         {/* Image */}
         <div className="aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden">
           {item.image ? (
-            <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+            <img src={item.image} alt={item.title} className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-300">
               <Calendar className="w-16 h-16" />
@@ -169,6 +171,30 @@ const itemId = searchParams.get('id') || '';
         <h2 className="text-xl font-extrabold text-brand-dark mb-3">Description</h2>
         <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">{item.description}</p>
       </div>
+
+      {/* App Download Prompt Modal */}
+      {showAppPrompt && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4" onClick={() => setShowAppPrompt(false)}>
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center relative" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setShowAppPrompt(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+              <X className="w-5 h-5" />
+            </button>
+            <Smartphone className="w-12 h-12 text-brand-gold mx-auto mb-4" />
+            <h3 className="text-xl font-black text-brand-dark mb-2">Book on the App</h3>
+            <p className="text-gray-500 text-sm mb-6">
+              Booking, messaging, photo handoffs, and secure payments are available in the ShareStash mobile app. Download it to complete your rental.
+            </p>
+            <div className="flex gap-3 justify-center">
+              <a href="https://apps.apple.com" className="bg-brand-dark text-white font-bold px-5 py-2.5 rounded-xl text-sm hover:bg-gray-800 transition-colors">
+                App Store
+              </a>
+              <a href="https://play.google.com" className="bg-brand-green text-white font-bold px-5 py-2.5 rounded-xl text-sm hover:bg-green-700 transition-colors">
+                Google Play
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Download App CTA */}
       <div className="mt-12 bg-brand-dark rounded-2xl p-8 text-center">
