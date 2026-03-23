@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://peerrentalapp.web.app/</loc>
+    <loc>https://joinsharestash.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,27 +11,27 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://peerrentalapp.web.app/login/</loc>
+    <loc>https://joinsharestash.com/login/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://peerrentalapp.web.app/register/</loc>
+    <loc>https://joinsharestash.com/register/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://peerrentalapp.web.app/privacy/</loc>
+    <loc>https://joinsharestash.com/privacy/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://peerrentalapp.web.app/terms/</loc>
+    <loc>https://joinsharestash.com/terms/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://peerrentalapp.web.app/help/</loc>
+    <loc>https://joinsharestash.com/help/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
