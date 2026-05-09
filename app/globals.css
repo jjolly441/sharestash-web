@@ -70,3 +70,12 @@ body {
 .animate-fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
 .animate-fade-in-delay-3 { animation-delay: 0.3s; opacity: 0; }
 .animate-fade-in-delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
