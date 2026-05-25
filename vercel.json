@@ -21,6 +21,22 @@
     {
       "source": "/.well-known/apple-app-site-association/",
       "destination": "/.well-known/apple-app-site-association"
+    },
+    {
+      "source": "/item/:id",
+      "destination": "/item?id=:id"
+    },
+    {
+      "source": "/item/:id/",
+      "destination": "/item?id=:id"
+    },
+    {
+      "source": "/user/:id",
+      "destination": "/user?id=:id"
+    },
+    {
+      "source": "/user/:id/",
+      "destination": "/user?id=:id"
     }
   ]
 }
