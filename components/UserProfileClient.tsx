@@ -9,13 +9,21 @@ import { User, Shield, Star, MapPin, Calendar, Loader2, ArrowLeft } from 'lucide
 
 export default function UserProfileClient() {
   const searchParams = useSearchParams();
-  const userId = searchParams.get('id') || '';
+  // Read id from the query param (?id=) OR the URL path (/user/{id}). The Vercel
+  // rewrite maps /user/{id} → /user?id={id} server-side, so the browser URL keeps
+  // /user/{id} with no query string — meaning searchParams is empty on the client.
+  const fromQuery = searchParams.get('id');
+  const fromPath = typeof window !== 'undefined'
+    ? window.location.pathname.split('/').filter(Boolean).pop() ?? ''
+    : '';
+  const userId = fromQuery || (fromPath && fromPath !== 'user' ? fromPath : '');
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [items, setItems] = useState<RentalItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (userId) loadProfile();
+    if (userId) { loadProfile(); }
+    else { setLoading(false); }
   }, [userId]);
 
   async function loadProfile() {

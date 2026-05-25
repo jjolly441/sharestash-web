@@ -18,10 +18,18 @@ export default function ItemDetailClient() {
   const [showAppPrompt, setShowAppPrompt] = useState(false);
 
   const searchParams = useSearchParams();
-const itemId = searchParams.get('id') || '';
+  // Read id from the query param (?id=) OR the URL path (/item/{id}). The Vercel
+  // rewrite maps /item/{id} → /item?id={id} server-side, so the browser URL keeps
+  // /item/{id} with no query string — meaning searchParams is empty on the client.
+  const fromQuery = searchParams.get('id');
+  const fromPath = typeof window !== 'undefined'
+    ? window.location.pathname.split('/').filter(Boolean).pop() ?? ''
+    : '';
+  const itemId = fromQuery || (fromPath && fromPath !== 'item' ? fromPath : '');
 
   useEffect(() => {
-    if (itemId) loadItem();
+    if (itemId) { loadItem(); }
+    else { setLoading(false); }
   }, [itemId]);
 
   async function loadItem() {
