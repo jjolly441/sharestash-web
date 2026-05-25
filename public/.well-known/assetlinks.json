@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.peerrentalapp.app",
+      "sha256_cert_fingerprints": [
+        "A0:85:CB:59:EA:B8:2F:D8:1E:2A:74:CA:5A:17:D5:3D:8C:39:41:2C:28:8F:27:BE:2C:33:2F:DA:03:BD:01:12"
+      ]
+    }
+  }
+]

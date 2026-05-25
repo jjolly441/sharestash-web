@@ -1,0 +1,21 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["53DSJ7L8Z7.com.peerrentalapp.app"],
+        "components": [
+          { "/": "/item/*", "comment": "Item detail deep links" },
+          { "/": "/book/*", "comment": "Booking flow deep links" },
+          { "/": "/user/*", "comment": "Public profile deep links" },
+          { "/": "/invite/*", "comment": "Lender/referral invite deep links" },
+          { "/": "/browse/*", "comment": "Category browse deep links" },
+          { "/": "/browse", "comment": "Browse landing" },
+          { "/": "/", "comment": "Home / tagged campaign links" }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["53DSJ7L8Z7.com.peerrentalapp.app"]
+  }
+}
